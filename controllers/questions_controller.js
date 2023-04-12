@@ -108,7 +108,7 @@ module.exports.createOption=async (req,res)=>{
             votes: 0,
             link_to_vote:""
         })
-        option.link_to_vote=`http://localhost:8000/options/${option.id}/add_vote`
+        option.link_to_vote=`${process.env.EXPRESS_SERVER_URL}/options/${option.id}/add_vote`
         await option.save()
         let question=await Question.findById(req.params.id)
         question.options.push(option._id)
